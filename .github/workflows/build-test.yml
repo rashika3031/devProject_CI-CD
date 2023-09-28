@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-    build-test:
+    build-test-publishArtifacts:
       runs-on: ubuntu-latest
   
       steps:
@@ -19,3 +19,9 @@ jobs:
   
         - name: Unit test case
           run: mvn test
+
+        - name: Generate and Upload Artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: devProjectArtifact
+            path: target/*.war  
